@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mouse House Click Practice</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f7fb;
+  color: #1f2937;
+}
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 42px;
+}
+header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1;
+}
+header p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #596275;
+}
+.note {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 9px 16px;
+  background: #fff;
+  border: 2px solid #d8dde7;
+  border-radius: 999px;
+  font-weight: 900;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.game {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 3px solid #dce1ea;
+  border-radius: 22px;
+  padding: 18px 12px;
+  text-align: center;
+  box-shadow: 0 3px 0 rgba(0,0,0,.05);
+}
+.game:hover,
+.game:focus-visible {
+  border-color: #6b7280;
+  outline: none;
+  transform: translateY(-2px);
+}
+.game:active {
+  transform: translateY(0);
+}
+.icon {
+  font-size: 50px;
+  line-height: 1;
+}
+.name {
+  font-size: 21px;
+  line-height: 1.1;
+  font-weight: 900;
+}
+footer {
+  text-align: center;
+  margin-top: 28px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  main { padding: 20px 14px 32px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Mouse Practice</h1>
+    <p>Choose a game and practice clicking!</p>
+    <div class="note">CLICK ONLY • NO DRAGGING</div>
+  </header>
+
+  <section class="grid" aria-label="Mouse House click practice games">
+    <a class="game" href="https://mouse-practice.com/mp01/g01/">
+      <span class="icon" aria-hidden="true">🍎</span>
+      <span class="name">Apple Catch</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g02/">
+      <span class="icon" aria-hidden="true">🐝</span>
+      <span class="name">Bumble Numbers</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g03/">
+      <span class="icon" aria-hidden="true">🍰</span>
+      <span class="name">Cake Monster</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g05/">
+      <span class="icon" aria-hidden="true">🃏</span>
+      <span class="name">Coyote Concentration</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g07/">
+      <span class="icon" aria-hidden="true">🪱</span>
+      <span class="name">Digging For Worms</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g08/">
+      <span class="icon" aria-hidden="true">❄️</span>
+      <span class="name">Frost Bite</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g10/">
+      <span class="icon" aria-hidden="true">🪵</span>
+      <span class="name">Log Run</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g12/">
+      <span class="icon" aria-hidden="true">🐧</span>
+      <span class="name">Penguin Drop</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g13/">
+      <span class="icon" aria-hidden="true">🥒</span>
+      <span class="name">Pickle Pop</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g14/">
+      <span class="icon" aria-hidden="true">🐷</span>
+      <span class="name">Pig Pile</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g16/">
+      <span class="icon" aria-hidden="true">🔷</span>
+      <span class="name">Shape Invasion</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g17/">
+      <span class="icon" aria-hidden="true">👀</span>
+      <span class="name">Simon Sees</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g18/">
+      <span class="icon" aria-hidden="true">⭐</span>
+      <span class="name">Star Climber</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g19/">
+      <span class="icon" aria-hidden="true">🐦</span>
+      <span class="name">Swing Fling</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g20/">
+      <span class="icon" aria-hidden="true">🍓</span>
+      <span class="name">Switch</span>
+    </a>
+<a class="game" href="https://mouse-practice.com/mp01/g21/">
+      <span class="icon" aria-hidden="true">🤿</span>
+      <span class="name">Treasure Dive</span>
+    </a>
+  </section>
+
+  <footer>
+    Games are from Mouse House MP01 and open in this same tab.
+  </footer>
+</main>
+</body>
+</html>
