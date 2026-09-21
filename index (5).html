@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trackpad Click Practice</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f8fb;
+      color: #1f2937;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 24px 40px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1;
+    }
+    .subtitle {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #4b5563;
+    }
+    .rule {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: white;
+      border: 2px solid #d1d5db;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .game-card {
+      min-height: 145px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      background: white;
+      border: 3px solid #d9dee8;
+      border-radius: 20px;
+      padding: 18px;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+      box-shadow: 0 2px 0 rgba(0,0,0,.05);
+    }
+    .game-card:hover, .game-card:focus-visible {
+      transform: translateY(-2px);
+      border-color: #6b7280;
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+      outline: none;
+    }
+    .game-card:active { transform: translateY(0); }
+    .emoji {
+      flex: 0 0 54px;
+      font-size: 42px;
+      text-align: center;
+    }
+    .game-info {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .game-info h2 {
+      margin: 0 0 7px;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+    .skill {
+      display: inline-block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: #eef2f7;
+      border-radius: 999px;
+      padding: 5px 9px;
+    }
+    .game-info p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.3;
+      color: #4b5563;
+    }
+    .play {
+      flex: 0 0 auto;
+      font-size: 26px;
+      font-weight: 900;
+    }
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    @media (max-width: 850px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding: 20px 14px 30px; }
+      .grid { grid-template-columns: 1fr; }
+      .game-card { min-height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Trackpad Click Practice</h1>
+      <p class="subtitle">Choose a game. Move the pointer and CLICK!</p>
+      <div class="rule">✓ Clicking only &nbsp; • &nbsp; No dragging games</div>
+    </header>
+
+    <section class="grid" aria-label="Click practice games">
+      <a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g01/index.html">
+      <div class="emoji" aria-hidden="true">🍎</div>
+      <div class="game-info">
+        <h2>Apple Catch</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the bird, then click to drop the apple.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g02/index.html">
+      <div class="emoji" aria-hidden="true">🐝</div>
+      <div class="game-info">
+        <h2>Bumble Numbers</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the bee, then click to drop the number.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g03/index.html">
+      <div class="emoji" aria-hidden="true">🍰</div>
+      <div class="game-info">
+        <h2>Cake Monster</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the candy, then click to drop it.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://www.funbrain.com/content/js_games/coyote_concentration/game.html">
+      <div class="emoji" aria-hidden="true">🃏</div>
+      <div class="game-info">
+        <h2>Coyote Concentration</h2>
+        <span class="skill">Click</span>
+        <p>Click two cards to find a match.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g07/index.html">
+      <div class="emoji" aria-hidden="true">🪱</div>
+      <div class="game-info">
+        <h2>Digging for Worms</h2>
+        <span class="skill">Click</span>
+        <p>Click to dig and find the coins.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g08/index.html">
+      <div class="emoji" aria-hidden="true">❄️</div>
+      <div class="game-info">
+        <h2>Frost Bite</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the creature and click to use its tongue.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g10/index.html">
+      <div class="emoji" aria-hidden="true">🪵</div>
+      <div class="game-info">
+        <h2>Log Run</h2>
+        <span class="skill">Click</span>
+        <p>Click UP to jump and DOWN to duck.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g12/index.html">
+      <div class="emoji" aria-hidden="true">🐧</div>
+      <div class="game-info">
+        <h2>Penguin Drop</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move to aim, then click to shoot.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g13/index.html">
+      <div class="emoji" aria-hidden="true">🥒</div>
+      <div class="game-info">
+        <h2>Pickle Pop</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move to aim and click to jump.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g14/index.html">
+      <div class="emoji" aria-hidden="true">🐷</div>
+      <div class="game-info">
+        <h2>Pig Pile</h2>
+        <span class="skill">Click</span>
+        <p>Click objects to remove them.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g16/index.html">
+      <div class="emoji" aria-hidden="true">🔷</div>
+      <div class="game-info">
+        <h2>Shape Invasion</h2>
+        <span class="skill">Click</span>
+        <p>Click two shapes to swap them.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g17/index.html">
+      <div class="emoji" aria-hidden="true">👀</div>
+      <div class="game-info">
+        <h2>Simon Sees</h2>
+        <span class="skill">Click</span>
+        <p>Click to open and close the monster&#x27;s eyes.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g18/index.html">
+      <div class="emoji" aria-hidden="true">⭐</div>
+      <div class="game-info">
+        <h2>Star Climber</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the ladder and click to move the climber.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g19/index.html">
+      <div class="emoji" aria-hidden="true">🐦</div>
+      <div class="game-info">
+        <h2>Swing Fling</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the swing and click to release.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g20/index.html">
+      <div class="emoji" aria-hidden="true">🍓</div>
+      <div class="game-info">
+        <h2>Switch</h2>
+        <span class="skill">Click</span>
+        <p>Click two fruits to swap them.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+<a class="game-card" href="https://mouse-practice.com/games/mp/mp01/g21/index.html">
+      <div class="emoji" aria-hidden="true">🤿</div>
+      <div class="game-info">
+        <h2>Treasure Dive</h2>
+        <span class="skill">Move + Click</span>
+        <p>Move the diver and click to swim up.</p>
+      </div>
+      <div class="play" aria-hidden="true">▶</div>
+    </a>
+    </section>
+
+    <footer>
+      Practice links open the original games hosted by Mouse House / Funbrain.
+    </footer>
+  </main>
+</body>
+</html>
