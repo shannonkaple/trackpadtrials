@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trackpad Click Practice</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:#eef1f5;color:#1f2937}
+body.playing{overflow:hidden}
+.menu{max-width:1120px;margin:0 auto;padding:22px}
+header{text-align:center;margin-bottom:22px}
+h1{margin:0 0 8px;font-size:clamp(34px,5vw,54px);line-height:1}
+.subtitle{margin:0;font-size:20px;font-weight:800;color:#596275}
+.note{display:inline-block;margin-top:13px;padding:8px 15px;border:2px solid #d8dde7;border-radius:999px;background:white;font-weight:900;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.game-card{min-height:145px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:white;border:3px solid #dce1ea;border-radius:22px;padding:16px 12px;cursor:pointer;color:inherit;box-shadow:0 3px 0 rgba(0,0,0,.05)}
+.game-card:hover,.game-card:focus-visible{border-color:#70798c;outline:none;transform:translateY(-2px)}
+.game-card:active{transform:translateY(0)}
+.icon{font-size:48px;line-height:1}
+.game-name{font-size:21px;font-weight:900;text-align:center;line-height:1.1}
+
+.player{display:none;position:fixed;inset:0;background:#dfe3e9;z-index:20}
+.player.show{display:flex;flex-direction:column}
+.toolbar{flex:0 0 auto;display:grid;grid-template-columns:auto auto 1fr auto auto;gap:8px;align-items:center;padding:8px;background:white;border-bottom:2px solid #ccd2db}
+.toolbar button{min-height:46px;border:0;border-radius:11px;padding:8px 14px;font-weight:900;font-size:16px;cursor:pointer}
+.primary{background:#1f2937;color:white}
+.secondary{background:#e9edf3;color:#1f2937}
+#title{text-align:center;font-size:21px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 6px}
+.frame-shell{flex:1 1 auto;min-height:0;padding:6px;display:flex}
+#frameHost{flex:1;min-width:0;min-height:0;background:white;border-radius:8px;overflow:hidden;border:1px solid #cfd5de}
+#frameHost iframe{width:100%;height:100%;border:0;background:white;display:block}
+.statusbar{flex:0 0 auto;background:white;border-top:1px solid #d7dce4;padding:5px 10px;text-align:center;font-size:12px;font-weight:700;color:#6b7280}
+.loading{height:100%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#596275;background:white}
+.toolbar button:disabled{opacity:.55;cursor:wait}
+
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){
+  .menu{padding:14px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toolbar{grid-template-columns:auto auto 1fr auto}
+  #prevBtn{display:none}
+  .toolbar button{font-size:14px;padding:7px 10px}
+  #title{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<section class="menu" id="menu">
+<header>
+  <h1>Trackpad Click Practice</h1>
+  <p class="subtitle">Choose a game and practice clicking.</p>
+  <div class="note">CLICK ONLY • NO DRAGGING • ONE TAB</div>
+</header>
+<div class="grid">
+<button class="game-card" type="button" data-index="0">
+      <span class="icon" aria-hidden="true">🍎</span>
+      <span class="game-name">Apple Catch</span>
+    </button>
+<button class="game-card" type="button" data-index="1">
+      <span class="icon" aria-hidden="true">🐝</span>
+      <span class="game-name">Bumble Numbers</span>
+    </button>
+<button class="game-card" type="button" data-index="2">
+      <span class="icon" aria-hidden="true">🍰</span>
+      <span class="game-name">Cake Monster</span>
+    </button>
+<button class="game-card" type="button" data-index="3">
+      <span class="icon" aria-hidden="true">🃏</span>
+      <span class="game-name">Coyote Concentration</span>
+    </button>
+<button class="game-card" type="button" data-index="4">
+      <span class="icon" aria-hidden="true">🪱</span>
+      <span class="game-name">Digging for Worms</span>
+    </button>
+<button class="game-card" type="button" data-index="5">
+      <span class="icon" aria-hidden="true">❄️</span>
+      <span class="game-name">Frost Bite</span>
+    </button>
+<button class="game-card" type="button" data-index="6">
+      <span class="icon" aria-hidden="true">🪵</span>
+      <span class="game-name">Log Run</span>
+    </button>
+<button class="game-card" type="button" data-index="7">
+      <span class="icon" aria-hidden="true">🐧</span>
+      <span class="game-name">Penguin Drop</span>
+    </button>
+<button class="game-card" type="button" data-index="8">
+      <span class="icon" aria-hidden="true">🥒</span>
+      <span class="game-name">Pickle Pop</span>
+    </button>
+<button class="game-card" type="button" data-index="9">
+      <span class="icon" aria-hidden="true">🐷</span>
+      <span class="game-name">Pig Pile</span>
+    </button>
+<button class="game-card" type="button" data-index="10">
+      <span class="icon" aria-hidden="true">🔷</span>
+      <span class="game-name">Shape Invasion</span>
+    </button>
+<button class="game-card" type="button" data-index="11">
+      <span class="icon" aria-hidden="true">👀</span>
+      <span class="game-name">Simon Sees</span>
+    </button>
+<button class="game-card" type="button" data-index="12">
+      <span class="icon" aria-hidden="true">⭐</span>
+      <span class="game-name">Star Climber</span>
+    </button>
+<button class="game-card" type="button" data-index="13">
+      <span class="icon" aria-hidden="true">🐦</span>
+      <span class="game-name">Swing Fling</span>
+    </button>
+<button class="game-card" type="button" data-index="14">
+      <span class="icon" aria-hidden="true">🍓</span>
+      <span class="game-name">Switch</span>
+    </button>
+<button class="game-card" type="button" data-index="15">
+      <span class="icon" aria-hidden="true">🤿</span>
+      <span class="game-name">Treasure Dive</span>
+    </button>
+</div>
+</section>
+
+<section class="player" id="player" aria-hidden="true">
+  <div class="toolbar">
+    <button id="gamesBtn" class="primary" type="button">← GAMES</button>
+    <button id="restartBtn" class="secondary" type="button">↻ RESTART</button>
+    <div id="title">Game</div>
+    <button id="prevBtn" class="secondary" type="button">◀ PREV</button>
+    <button id="nextBtn" class="secondary" type="button">NEXT ▶</button>
+  </div>
+  <div class="frame-shell">
+    <div id="frameHost"></div>
+  </div>
+  <div class="statusbar" id="statusbar">Only the game loads below. Use the buttons above — no new tabs.</div>
+</section>
+
+<script>
+(() => {
+  const games = [
+    {name:'Apple Catch',url:'https://mouse-practice.com/games/mp/mp01/g01/index.html',icon:'🍎'},
+    {name:'Bumble Numbers',url:'https://mouse-practice.com/games/mp/mp01/g02/index.html',icon:'🐝'},
+    {name:'Cake Monster',url:'https://mouse-practice.com/games/mp/mp01/g03/index.html',icon:'🍰'},
+    {name:'Coyote Concentration',url:'https://www.funbrain.com/content/js_games/coyote_concentration/game.html',icon:'🃏'},
+    {name:'Digging for Worms',url:'https://mouse-practice.com/games/mp/mp01/g07/index.html',icon:'🪱'},
+    {name:'Frost Bite',url:'https://mouse-practice.com/games/mp/mp01/g08/index.html',icon:'❄️'},
+    {name:'Log Run',url:'https://mouse-practice.com/games/mp/mp01/g10/index.html',icon:'🪵'},
+    {name:'Penguin Drop',url:'https://mouse-practice.com/games/mp/mp01/g12/index.html',icon:'🐧'},
+    {name:'Pickle Pop',url:'https://mouse-practice.com/games/mp/mp01/g13/index.html',icon:'🥒'},
+    {name:'Pig Pile',url:'https://mouse-practice.com/games/mp/mp01/g14/index.html',icon:'🐷'},
+    {name:'Shape Invasion',url:'https://mouse-practice.com/games/mp/mp01/g16/index.html',icon:'🔷'},
+    {name:'Simon Sees',url:'https://mouse-practice.com/games/mp/mp01/g17/index.html',icon:'👀'},
+    {name:'Star Climber',url:'https://mouse-practice.com/games/mp/mp01/g18/index.html',icon:'⭐'},
+    {name:'Swing Fling',url:'https://mouse-practice.com/games/mp/mp01/g19/index.html',icon:'🐦'},
+    {name:'Switch',url:'https://mouse-practice.com/games/mp/mp01/g20/index.html',icon:'🍓'},
+    {name:'Treasure Dive',url:'https://mouse-practice.com/games/mp/mp01/g21/index.html',icon:'🤿'}
+  ];
+
+  const menu = document.getElementById('menu');
+  const player = document.getElementById('player');
+  const frameHost = document.getElementById('frameHost');
+  const title = document.getElementById('title');
+  const statusbar = document.getElementById('statusbar');
+  const gamesBtn = document.getElementById('gamesBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  let current = 0;
+  let busy = false;
+  let loadTimer = null;
+  let firstLoad = true;
+
+  function setBusy(value) {
+    busy = value;
+    restartBtn.disabled = value;
+    prevBtn.disabled = value;
+    nextBtn.disabled = value;
+  }
+
+  function cancelPending() {
+    if (loadTimer) {
+      clearTimeout(loadTimer);
+      loadTimer = null;
+    }
+  }
+
+  function makeFreshFrame(url, name, stagger = false) {
+    cancelPending();
+    setBusy(true);
+    frameHost.innerHTML = '<div class="loading">Loading ' + name + '…</div>';
+    statusbar.textContent = 'Loading game…';
+
+    const delay = stagger ? (500 + Math.floor(Math.random() * 3000)) : 300;
+
+    loadTimer = setTimeout(() => {
+      loadTimer = null;
+      frameHost.replaceChildren();
+
+      const iframe = document.createElement('iframe');
+      iframe.title = name;
+      iframe.src = url;
+      iframe.setAttribute('allow', 'autoplay; fullscreen');
+      iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+
+      iframe.addEventListener('load', () => {
+        statusbar.textContent = 'Only the game loads below. Use the buttons above — no new tabs.';
+        setTimeout(() => setBusy(false), 1000);
+      }, { once: true });
+
+      frameHost.appendChild(iframe);
+      setTimeout(() => setBusy(false), 6000);
+    }, delay);
+  }
+
+  function openGame(index, initial = false) {
+    if (busy) return;
+
+    current = (index + games.length) % games.length;
+    const g = games[current];
+
+    title.textContent = g.icon + ' ' + g.name;
+    menu.style.display = 'none';
+    player.classList.add('show');
+    player.setAttribute('aria-hidden','false');
+    document.body.classList.add('playing');
+
+    const stagger = initial && firstLoad && g.url.includes('mouse-practice.com');
+    if (stagger) firstLoad = false;
+
+    makeFreshFrame(g.url, g.name, stagger);
+  }
+
+  function closePlayer() {
+    cancelPending();
+    frameHost.replaceChildren();
+    setBusy(false);
+    player.classList.remove('show');
+    player.setAttribute('aria-hidden','true');
+    document.body.classList.remove('playing');
+    menu.style.display = '';
+    statusbar.textContent = 'Only the game loads below. Use the buttons above — no new tabs.';
+  }
+
+  document.querySelectorAll('.game-card').forEach(btn => {
+    btn.addEventListener('click', () => openGame(Number(btn.dataset.index), true));
+  });
+
+  gamesBtn.addEventListener('click', closePlayer);
+
+  restartBtn.addEventListener('click', () => {
+    if (busy) return;
+    const g = games[current];
+    makeFreshFrame(g.url, g.name, false);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (busy) return;
+    openGame(current - 1, false);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (busy) return;
+    openGame(current + 1, false);
+  });
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && player.classList.contains('show')) closePlayer();
+  });
+})();
+</script>
+</body>
+</html>
